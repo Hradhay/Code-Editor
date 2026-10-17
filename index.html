@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Editor - For Front End</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header>
+        <div class="container row">
+            <div class="brand">
+                <div class="logo"></div>
+                <div class="title">Code Editor - For Front End</div>
+            </div>
+            
+            <div class="row">
+                <button class="btn secondary" id="saveBtn" title="save work locally"><span>Save</span></button>
+                <button class="btn secondary" id="loadBtn" title="load work file"><span>Load</span></button>
+                <input id="openFile" type="file" accept="application/jason" hidden>
+            </div> 
+        </div>
+    </header>
+
+
+    <main>
+        <aside class="card panel stack">
+
+            <h2>Text / Assignment</h2>
+
+            <textarea  id="assignment" class="text" placeholder="write the task description..."></textarea>
+
+            <div class="stack">
+                <label for="testArea" class="labe">Validation tests (javasctipt only - option)</label>
+                <textarea id="testArea" class="text" placeholder="write a simple test to append after the student's code to check the soln. "></textarea>
+            </div>    
+
+            <div class="muted">
+                Tip: <span class="kbd">Ctrl</span> + <span class="kbd">S</span> to save,
+                    <span class="kbd">Ctrl</span> + <span class="kbd">Enter</span> to run.
+            </div>
+        </aside>
+
+        <section class="stack" id="web-only"> 
+            <div class="card panel stack" id="webEditors">
+                <div class="row">
+                    <h2>HTML / CSS / JS</h2>
+                    <div class="row">
+                        <button class="btn ok" id="runweb">Run</button>
+                        <button class="btn secondary" id="openPreview" >Open preview in new window.</button>
+                    </div>
+                </div>
+                 
+                <!--here the role is used for the peple with diabilities 
+                    also "aria" is called "Accissible rich interner application" it is a set attibutes to provide meaningful behaviours to this elements -->
+                <div class="tabs" id="webTabs" role="tablist" aria-label="web editors">
+                    <button class="tab active" role="tab" aria-selected="true" tabindex="0" data-pane="html">HTML</button>                    
+                    <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-pane="css">CSS</button>
+                    <button class="tab" role="tab" aria-selected="false" tabindex="-1" data-pane="js">JS</button>
+                </div>
+
+                <div class="editor-wrap" data-pane="html">
+                    <div class="editor" id="ed_html"></div>
+                </div>
+                
+                <div class="editor-wrap" data-pane="css" hidden>
+                    <div class="editor" id="ed_css"></div>
+                </div>
+                
+                <div class="editor-wrap" data-pane="js" hidden>
+                    <div class="editor" id="ed_js"></div>
+                </div>
+
+                <div class="stack">
+
+                    <h3>Preview</h3>
+                    <iframe frameborder="1" class="preview" id="preview" sandbox="allow-scripts allow-same-origin allow-modals allow-forms"></iframe>
+
+                </div>
+            </div>
+        </section>
+        
+        <aside class="card panel stack">
+            <h2>Output</h2>
+
+            <div class="out" id="output" aria-live="polite"></div>
+            <div class="row">
+                <button class="btn warn" id="runTests">Run with tests</button>
+                <button class="btn err" id="clearOut">Clear log</button>
+            </div>
+            <h3>Notes</h3>
+            <ul class="muted">
+                <li>Everything run inside the browser in a sandbox.</li>
+                <li>You can save the work as a JSON file and restore it.....</li>
+            </ul>
+        </aside>
+
+    </main>
+    
+    <div class="footer">&copy; 2025 Hradhay Yagnik Web Editor - All rights reserved</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
